@@ -1,2 +1,2 @@
 # php-simple-ogp
-simple ogp maler
+simple ogp maker
