@@ -1,0 +1,15 @@
+{
+    "name": "nonz250/php-simple-ogp",
+    "description": "This is a simple library for reading OGP.",
+    "type": "library",
+    "license": "MIT",
+    "authors": [
+        {
+            "name": "Nozomi Hosaka",
+            "email": "hosaka.non.work@gmail.com"
+        }
+    ],
+    "require": {
+        "phpunit/phpunit": "^9.5"
+    }
+}
