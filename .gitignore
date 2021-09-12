@@ -1,2 +1,3 @@
 docker-compose.yml
 /vendor/
+.php_cs.cache
