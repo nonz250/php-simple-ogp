@@ -15,8 +15,7 @@
     "require-dev": {
         "ext-dom": "*",
         "ext-mbstring": "*",
-        "phpunit/phpunit": "^9.5",
-        "guzzlehttp/guzzle": "^7.3"
+        "phpunit/phpunit": "^9.5"
     },
     "autoload": {
         "psr-4": {
