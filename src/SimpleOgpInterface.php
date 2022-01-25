@@ -29,4 +29,9 @@ interface SimpleOgpInterface
      * @return string
      */
     public function imagePath(): string;
+
+    /**
+     * @return string
+     */
+    public function url(): string;
 }

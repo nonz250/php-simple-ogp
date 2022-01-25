@@ -5,6 +5,7 @@ namespace SimpleOgp;
 
 use DOMDocument;
 use DOMXPath;
+use InvalidArgumentException;
 use RuntimeException;
 
 class SimpleOgp implements SimpleOgpInterface
@@ -39,6 +40,9 @@ class SimpleOgp implements SimpleOgpInterface
      */
     public function __construct(string $url)
     {
+        if ($url === '') {
+            throw new InvalidArgumentException('Url is required.');
+        }
         $this->url = $url;
     }
 
@@ -56,11 +60,11 @@ class SimpleOgp implements SimpleOgpInterface
         @$dom->loadHTML(mb_convert_encoding($html, 'HTML-ENTITIES', 'UTF-8'));
         $xpath = new DOMXPath($dom);
         $image = $xpath->query('//meta[@property="og:image"]/@content');
-        $this->imagePath = (string)$image[0]->value ?? '';
+        $this->imagePath = $image[0] ? (string)$image[0]->value : '';
         $title = $xpath->query('//meta[@property="og:title"]/@content');
-        $this->title = (string)$title[0]->value ?? '';
+        $this->title = $title[0] ? (string)$title[0]->value : '';
         $description = $xpath->query('//meta[@property="og:description"]/@content');
-        $this->description = (string)$description[0]->value ?? $title . 'を見る';
+        $this->description = $description[0] ? (string)$description[0]->value : '';
         if (mb_strlen($this->description) > 100) {
             $this->description = mb_substr($this->description, 0, 100) . '...';
         }
@@ -97,5 +101,13 @@ class SimpleOgp implements SimpleOgpInterface
     public function imagePath(): string
     {
         return $this->imagePath;
+    }
+
+    /**
+     * @return string
+     */
+    public function url(): string
+    {
+        return $this->url;
     }
 }
