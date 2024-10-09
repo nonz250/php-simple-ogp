@@ -30,3 +30,4 @@ RUN curl -L https://github.com/FriendsOfPHP/PHP-CS-Fixer/releases/download/v3.1.
     mv php-cs-fixer /usr/local/bin/php-cs-fixer
 
 COPY php.ini /usr/local/etc/php
+COPY --from=composer /usr/bin/composer /usr/bin/composer
