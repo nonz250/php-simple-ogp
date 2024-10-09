@@ -8,12 +8,3 @@ services:
     volumes:
     - ./:/var/www/html:cached
     working_dir: /var/www/html
-
-  composer:
-    container_name: composer
-    build:
-      context: ./infrastructure/composer
-      dockerfile: Dockerfile
-    volumes:
-    - ./:/src
-    working_dir: /src
