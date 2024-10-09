@@ -19,14 +19,11 @@ RUN set -eux && \
         icu-dev && \
     cp /usr/share/zoneinfo/Asia/Tokyo /etc/localtime && \
     echo ${TZ} > /etc/timezone && \
-    pecl install xdebug && \
+    pecl install xdebug-2.9.8 && \
     apk del .build-dependencies && \
     docker-php-ext-install intl mbstring && \
     docker-php-ext-enable xdebug && \
     mkdir $PSYSH_DIR && wget $PHP_MANUAL_URL -P $PSYSH_DIR
 
-RUN curl -L https://github.com/FriendsOfPHP/PHP-CS-Fixer/releases/download/v3.1.0/php-cs-fixer.phar -o php-cs-fixer && \
-    chmod a+x php-cs-fixer && \
-    mv php-cs-fixer /usr/local/bin/php-cs-fixer
-
 COPY php.ini /usr/local/etc/php
+COPY --from=composer /usr/bin/composer /usr/bin/composer
