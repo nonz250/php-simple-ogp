@@ -19,7 +19,7 @@ RUN set -eux && \
         icu-dev && \
     cp /usr/share/zoneinfo/Asia/Tokyo /etc/localtime && \
     echo ${TZ} > /etc/timezone && \
-    pecl install xdebug && \
+    pecl install xdebug-2.9.8 && \
     apk del .build-dependencies && \
     docker-php-ext-install intl mbstring && \
     docker-php-ext-enable xdebug && \
